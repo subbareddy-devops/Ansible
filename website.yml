@@ -1,4 +1,5 @@
 ---
+
 - name: deploy moso_interior website
   hosts: all
   become: yes
@@ -10,16 +11,16 @@
         name: "*"
         state: latest
         update_cache: yes
-    
+
     - name: install apache server
       yum:
         name: httpd
         state: latest
 
-    - name: Change directory to the html directory
+    - name: change directory to the html directory
       shell: cd /var/www/html
 
-    - name: download webfiles from tooplate
+    - name: download web files from tooplate
       get_url:
         url: https://www.tooplate.com/zip-templates/2133_moso_interior.zip
         dest: /var/www/html/
@@ -46,9 +47,9 @@
         path: /var/www/html/2133_moso_interior.zip
         state: absent
 
+
     - name: start apache server
       ansible.builtin.service:
         enabled: yes
         name: httpd
         state: started
-  
