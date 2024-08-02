@@ -1,0 +1,4 @@
+- name: file transfer from Ansible to all nodes
+  ansible.builtin.copy:
+    src: /home/ec2-user/test
+    dest: /tmp/
