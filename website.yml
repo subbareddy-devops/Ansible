@@ -1,0 +1,54 @@
+---
+- name: deploy moso_interior website
+  hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: update ec2 instance
+      yum:
+        name: "*"
+        state: latest
+        update_cache: yes
+    
+    - name: install apache server
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Change directory to the html directory
+      shell: cd /var/www/html
+
+    - name: download webfiles from tooplate
+      get_url:
+        url: https://www.tooplate.com/zip-templates/2133_moso_interior.zip
+        dest: /var/www/html/
+
+    - name: unzip the zip folder
+      ansible.builtin.unarchive:
+        src: /var/www/html/2133_moso_interior.zip
+        dest: /var/www/html
+        remote_src: yes
+
+    - name: copy webfiles from the 2133_moso_interior directory to the html directory
+      copy:
+        src: /var/www/html/2133_moso_interior/
+        dest: /var/www/html/
+        remote_src: yes
+
+    - name: remove the 2133_moso_interior directory
+      file:
+        path: /var/www/html/2133_moso_interior
+        state: absent
+
+    - name: remove the 2133_moso_interior.zip directory
+      file:
+        path: /var/www/html/2133_moso_interior.zip
+        state: absent
+
+    - name: start apache server
+      ansible.builtin.service:
+        enabled: yes
+        name: httpd
+        state: started
+  
