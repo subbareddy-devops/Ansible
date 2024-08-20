@@ -1,0 +1,8 @@
+- name: Variables from files
+  host: localhost
+  vars_files:
+    - variables.yml
+  tasks:
+    - name: Printing variables
+      ansible.builtin.debug:
+        msg: "I am learning {{COURSE}} from trainer {{TRAINER}} for duration of {{DURATION}}"

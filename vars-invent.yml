@@ -1,0 +1,6 @@
+- name: varibales from inventory
+  host: localhost
+  tasks:
+    - name: print variables from inventory
+      ansible.builtin.debug:
+        msg: "hostname: {{hostname}}, category: {{category}}"

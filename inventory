@@ -1,1 +1,6 @@
+[localhost]
 172.31.46.205
+
+[localhost:vars]
+hostname: Ansible
+category: DevOps

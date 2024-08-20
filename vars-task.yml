@@ -1,0 +1,18 @@
+- name: Variables from task
+  host: localhost
+  vars: #Variables of parent or main task
+    money: 200000RS
+    land: 2-Acres
+
+  tasks:
+    - name: Print inherited values from parent or main task
+      ansible.builtin.debug:
+        msg: "money: {{money}}, land: {{land}}"
+
+    vars: #variables of child or sub task
+      money: 400000RS
+      houses: 2-houses
+    
+    - name: print child or sub level task
+      ansible.builtin.debug:
+        msg: "money: {{money}}, land: {{land}}, houses: {{houses}}"
