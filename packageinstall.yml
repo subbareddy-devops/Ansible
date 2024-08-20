@@ -10,10 +10,10 @@
 
     - name: install nginx in node1
       yum:
-        name: nginx
+        name: nginx1
         state: latest
     - name: starting nginx server
       ansible.builtin.service:
         enabled: yes
-        name: nginx
+        name: nginx1
         state: started
