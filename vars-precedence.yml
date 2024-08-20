@@ -1,7 +1,7 @@
 - name: checking the precendence of different variables
   host: node1
   Vars:
-    name: Subbareddy-play
+    NAME: Subbareddy-play
   vars_files:
     - variables.yml
   vars_prompt:
@@ -10,8 +10,8 @@
       private: false
     - name: name
       vars:
-        name: subbareddy-task
+        NAME: subbareddy-task
   tasks:
     name: printing name
     ansible.builtin.debug:
-      msg: "name is: {{name}}"
+      msg: "name is: {{NAME}}"
