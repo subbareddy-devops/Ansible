@@ -1,5 +1,5 @@
 - name: Variables from files
-  host: localhost
+  hosts: localhost
   vars_files:
     - variables.yml
   tasks:

@@ -1,5 +1,5 @@
 - name: Variables from task
-  host: localhost
+  hosts: localhost
   vars: #Variables of parent or main task
     money: 200000RS
     land: 2-Acres
