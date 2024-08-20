@@ -1,6 +1,6 @@
 - name: checking the precendence of different variables
   host: node1
-  Vars:
+  vars:
     NAME: Subbareddy-play
   vars_files:
     - variables.yml
