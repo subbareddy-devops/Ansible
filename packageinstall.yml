@@ -5,14 +5,12 @@
   become_user: root
 
   tasks:
-    - command: amazon-linux-extras install nginx-1.26.0=latest -y
-      args:
-        creates: /sbin/nginx
+    - name: Enable amazon-linux-extras packages
+      shell: amazon-linux-extras enable postgresql14
 
     - name: install nginx in node1
-      yum:
-        name: nginx1
-        state: latest
+      shell: amazon-linux-extras install nginx1
+
     - name: starting nginx server
       ansible.builtin.service:
         enabled: yes
