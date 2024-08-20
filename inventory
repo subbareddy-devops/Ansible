@@ -2,5 +2,5 @@
 172.31.37.190
 
 [localhost:vars]
-hostname: Ansible
-category: DevOps
+username=Ansible
+category=DevOps
