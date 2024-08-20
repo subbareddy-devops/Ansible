@@ -1,0 +1,21 @@
+---
+
+- name: installing a package in node1
+  hosts: all
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Enable amazon-linux-extras packages
+      shell: amazon-linux-extras enable postgresql14
+
+    - name: install nginx in node1
+      yum:
+        name: nginx
+        state: latest
+    - name: starting nginx server
+        ansible.builtin.service:
+          enabled: yes
+          name: nginx
+          state: started
+      

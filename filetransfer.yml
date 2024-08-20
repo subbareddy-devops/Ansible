@@ -1,5 +1,0 @@
-- name: file transfer from Ansible to all nodes
-  copy:
-    src: /home/ec2-user/test
-    dest: /tmp/
-    remote_src: yes
