@@ -9,7 +9,7 @@
       prompt: please enter your name
       private: false
   tasks:
-    # - name: variable at task level
+    - name: variable at task level
     #   vars:
     #     NAME: subbareddy-task
     ansible.builtin.debug:
