@@ -2,8 +2,8 @@
   hosts: node1
   vars:
     NAME: Subbareddy-play
-  vars_files:
-    - variables.yml
+  # vars_files:
+  #   - variables.yml
   vars_prompt:
     - name: name
       prompt: please enter your name
@@ -16,4 +16,5 @@
         msg: "name is: {{NAME}}"
 #1. arguments
 #2. task level
-#3.
+#3. files
+#4.
