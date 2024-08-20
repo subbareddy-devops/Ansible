@@ -1,5 +1,5 @@
 [localhost]
-3.80.184.122
+172.31.37.190
 
 [localhost:vars]
 hostname: Ansible
