@@ -1,5 +1,4 @@
 ---
-
 - name: installing a package in node1
   hosts: all
   become: yes
@@ -14,8 +13,7 @@
         name: nginx
         state: latest
     - name: starting nginx server
-        ansible.builtin.service:
-          enabled: yes
-          name: nginx
-          state: started
-      
+      ansible.builtin.service:
+        enabled: yes
+        name: nginx
+        state: started
