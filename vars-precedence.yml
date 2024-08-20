@@ -8,10 +8,10 @@
     - name: name
       prompt: please enter your name
       private: false
-    - name: name
+  tasks:
+    - name: variable at task level
       vars:
         NAME: subbareddy-task
-  tasks:
-    - name: printing name
       ansible.builtin.debug:
         msg: "name is: {{NAME}}"
+#1. arguments
