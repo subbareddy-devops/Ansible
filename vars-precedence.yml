@@ -1,5 +1,5 @@
 - name: checking the precendence of different variables
-  host: node1
+  hosts: node1
   vars:
     NAME: Subbareddy-play
   vars_files:
