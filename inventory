@@ -1,6 +1,6 @@
 [node1]
 3.84.127.27
 
-[localhost:vars]
+[node1:vars]
 username=Ansible
 category=DevOps
