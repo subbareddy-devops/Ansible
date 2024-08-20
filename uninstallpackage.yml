@@ -8,11 +8,7 @@
     - name: Enable amazon-linux-extras packages
       shell: amazon-linux-extras enable postgresql14
 
-    - name: install nginx in node1
-      shell: amazon-linux-extras install nginx1 -y
-
-    - name: starting nginx server
-      ansible.builtin.service:
-        enabled: yes
+    - name: uninstall nginx in node1
+      ansible.builtin.yum:
         name: nginx
-        state: started
+        state: absent
