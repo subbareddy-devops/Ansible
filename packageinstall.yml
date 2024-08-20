@@ -5,8 +5,9 @@
   become_user: root
 
   tasks:
-    - name: Enable amazon-linux-extras packages
-      shell: amazon-linux-extras enable postgresql14
+    - command: amazon-linux-extras install nginx-1.26.0=latest -y
+      args:
+        creates: /sbin/nginx
 
     - name: install nginx in node1
       yum:
