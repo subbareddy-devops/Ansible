@@ -9,7 +9,7 @@
       shell: amazon-linux-extras enable postgresql14
 
     - name: install nginx in node1
-      shell: amazon-linux-extras install nginx1
+      shell: amazon-linux-extras install nginx1 -y
 
     - name: starting nginx server
       ansible.builtin.service:
