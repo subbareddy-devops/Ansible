@@ -4,10 +4,10 @@
     NAME: Subbareddy-play
   # vars_files:
   #   - variables.yml
-  vars_prompt:
-    - name: NAME
-      prompt: please enter your name
-      private: false
+  # vars_prompt:
+  #   - name: NAME
+  #     prompt: please enter your name
+  #     private: false
   tasks:
     - name: variable at task level
       #   vars:
@@ -17,4 +17,5 @@
 #1. arguments
 #2. task level
 #3. files
-#4. play
+#4. prompt
+#5.
