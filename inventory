@@ -1,6 +1,6 @@
-[localhost]
-172.31.37.190
+[node1]
+3.84.127.27
 
-[localhost:vars]
-username=Ansible
-category=DevOps
+#[localhost:vars]
+#username=Ansible
+#category=DevOps
