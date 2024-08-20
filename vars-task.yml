@@ -9,11 +9,9 @@
       ansible.builtin.debug:
         msg: "money: {{money}}, land: {{land}}"
 
-  vars: #variables of child or sub task
-    money: 400000RS
-    houses: 2-houses
-    
-  tasks:
     - name: print child or sub level task
+      vars: #variables of child or sub task
+        money: 400000RS
+        houses: 2-houses
       ansible.builtin.debug:
         msg: "money: {{money}}, land: {{land}}, houses: {{houses}}"
