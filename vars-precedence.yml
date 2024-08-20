@@ -12,6 +12,6 @@
       vars:
         NAME: subbareddy-task
   tasks:
-    name: printing name
-    ansible.builtin.debug:
-      msg: "name is: {{NAME}}"
+    - name: printing name
+      ansible.builtin.debug:
+        msg: "name is: {{NAME}}"
