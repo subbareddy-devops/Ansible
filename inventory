@@ -2,5 +2,5 @@
 3.84.127.27
 
 [node1:vars]
-username=Ansible
+name=subbareddy-inventory
 category=DevOps
