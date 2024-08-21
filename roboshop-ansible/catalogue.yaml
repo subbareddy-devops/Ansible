@@ -3,12 +3,10 @@
   become: yes
   tasks:
     - name: Install EPEL packages
-      ansible.builtin.shell: "amazon-linux-extras install epel -y"
+      ansible.builtin.shell: "sudo yum install https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y"
 
-    - name: install latest LTS version of Node.js
-      ansible.builtin.yum:
-        name: nodejs
-        state: installed
+    - name: Install EPEL packages
+      ansible.builtin.shell: "sudo yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1"
 
     - name: checking if roboshop user already exist
       ansible.builtin.command: id roboshop
