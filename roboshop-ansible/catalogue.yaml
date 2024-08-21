@@ -2,8 +2,10 @@
   hosts: node2
   become: yes
   tasks:
-    - name: Install EPEL packages
-      ansible.builtin.shell: "sudo yum install https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm"
+    - name: nodejs repos download
+      ansible.builtin.get_url:
+        url: https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm
+        dest: /tmp/
 
     - name: Install EPEL packages
       ansible.builtin.shell: "sudo yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1"
