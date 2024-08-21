@@ -16,4 +16,4 @@
       ansible.builtin.shell: "source ~/.bashrc"
 
     - name: install nodejs
-      ansible.builtin.shell: "fnm use --install-if-missing 20"
+      shell: "fnm use --install-if-missing 20"
