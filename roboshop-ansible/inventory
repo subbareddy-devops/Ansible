@@ -1,8 +1,11 @@
-[node1]
+[mongodb]
 18.207.161.109
 
-[node2]
-18.232.130.231
+[catalogue]
+3.81.113.118
+
+
+
 #[node1:vars]
 #NAME=subbareddy-inventory
 #category=DevOps
