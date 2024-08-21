@@ -8,7 +8,7 @@
         state: directory
 
     - name: installs nvm (Node Version Manager)
-      ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+      ansible.builtin.shell: "curl -fsSL https://fnm.vercel.app/install | bash"
       args:
         chdir: /app
 
@@ -16,4 +16,4 @@
       ansible.builtin.shell: "source ~/.bashrc"
 
     - name: install nodejs
-      ansible.builtin.shell: "nvm install --lts"
+      ansible.builtin.shell: "fnm use --install-if-missing 20"
