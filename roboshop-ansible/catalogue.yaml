@@ -9,7 +9,8 @@
       ansible.builtin.shell: "source ~/.bashrc"
 
     - name: install latest LTS version of Node.js
-      shell: nvm install node
+      ansible.builtin.command:
+        cmd: nvm install node
 
     - name: checking if roboshop user already exist
       ansible.builtin.command: id roboshop
