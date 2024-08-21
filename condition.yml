@@ -1,0 +1,14 @@
+- name: creating a user with name Roboshop
+  hosts: localhost
+  tasks:
+    # when you dont find required module, you can use ansible.builtin.command to use linux commands directly
+    # when user does not exist, ansible treat that as failure and come out by default
+    # to avoid that we can use ignore failures
+    - name: checking if roboshop user already exist
+      ansible.builtin.command: id roboshop
+      register: output #previous command result is stored under variable to output
+      ignore_errors: true
+
+    - name: print the result
+      ansible.builtin.debug:
+        msg1: "Output is {{output}}"
