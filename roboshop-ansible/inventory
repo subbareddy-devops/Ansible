@@ -1,6 +1,8 @@
 [node1]
 18.207.161.109
 
+[node2]
+18.232.130.231
 #[node1:vars]
 #NAME=subbareddy-inventory
 #category=DevOps
