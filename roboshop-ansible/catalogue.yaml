@@ -17,11 +17,11 @@
 
     - name: This loads nvm
       ansible.builtin.shell: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
-        ignore_errors: True
+      ignore_errors: True
 
     - name: This loads nvm bash_completion
       ansible.builtin.shell: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
-        ignore_errors: True
+      ignore_errors: True
 
     - name: install nodejs
       ansible.builtin.shell: "nvm install 20"
