@@ -13,13 +13,13 @@
         chdir: /app
 
     - name: export nvm
-      ansible.builtin.command: 'export NVM_DIR="$HOME/.nvm"'
+      ansible.builtin.shell: 'export NVM_DIR="$HOME/.nvm"'
 
     - name: This loads nvm
-      ansible.builtin.command: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+      ansible.builtin.shell: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
 
     - name: This loads nvm bash_completion
-      ansible.builtin.command: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
+      ansible.builtin.shell: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
 
     - name: install nodejs
       ansible.builtin.shell: "nvm install 20"
