@@ -2,13 +2,18 @@
   hosts: node2
   become: yes
   tasks:
-    - name: nodejs repos download
+    - name: curl installation
+      ansible.builtin.yum:
+        name: curl
+        state: installed
+
+    - name: Download the nodejs setup script
       ansible.builtin.get_url:
-        url: https://rpm.nodesource.com/pub_20.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm
+        url: curl -fsSL https://rpm.nodesource.com/setup_18.x -o nodesource_setup.sh
         dest: /tmp/
 
-    - name: Install EPEL packages
-      ansible.builtin.shell: "sudo yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1"
+    - name: installing nodejs
+      ansible.builtin.shell: "bash nodesource_setup.sh"
 
     - name: checking if roboshop user already exist
       ansible.builtin.command: id roboshop
