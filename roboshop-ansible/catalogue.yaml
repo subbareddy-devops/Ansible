@@ -2,13 +2,14 @@
   hosts: node2
   become: yes
   tasks:
-    - name: Setup NodeJS repos
-      ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
+    - name: Install node version manager (nvm)
+      ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
 
-    - name: Install NodeJS
-      ansible.builtin.yum:
-        name: nodejs
-        state: installed
+    - name: Load nvm
+      ansible.builtin.shell: "source ~/.bashrc"
+
+    - name: install latest LTS version of Node.js
+      ansible.builtin.shell: "nvm install --lts"
 
     - name: checking if roboshop user already exist
       ansible.builtin.command: id roboshop
