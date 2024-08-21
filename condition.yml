@@ -16,3 +16,9 @@
     - name: printing the exit status
       ansible.builtin.debug:
         msg: "exitstatus is {{output.rc}}"
+
+    - name: creating user if already not exist
+      become: yes
+      ansible.builtin.user:
+        name: roboshop
+      when: output.rc !=0 #if this statement is true, then only this module execute
