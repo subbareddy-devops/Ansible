@@ -1,50 +1,21 @@
-- name: Installing application server with name catalogue
-  hosts: node2
+- name: Creating catalogue app server
+  hosts: catalogue
   become: yes
   tasks:
-    - name: curl installation
-      ansible.builtin.yum:
-        name: curl
-        state: installed
-
-    - name: Download the nodejs setup script
-      ansible.builtin.shell: "curl -fsSL https://rpm.nodesource.com/setup_18.x -o nodesource_setup.sh"
-
-    - name: installing nodejs
-      ansible.builtin.shell: "bash nodesource_setup.sh"
-
-    - name: checking if roboshop user already exist
-      ansible.builtin.command: id roboshop
-      register: output
-      ignore_errors: true
-
-    - name: creating user if already not exist
-      ansible.builtin.user:
-        name: roboshop
-      when: output.rc !=0
-
     - name: Create a directory if it does not exist
       ansible.builtin.file:
         path: /app
         state: directory
 
-    - name: Download the application code to created app directory
-      ansible.builtin.shell: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-      args:
-        chdir: /tmp
-
-    - name: Unarchive a file that is already on the remote machine
-      ansible.builtin.unarchive:
-        src: /tmp/catalogue.zip
-        dest: /app
-        remote_src: yes
-
-    - name: installing dependencies
-      ansible.builtin.command: npm install
+    - name: installs nvm (Node Version Manager)
+      ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash"
       args:
         chdir: /app
 
-    - name: Setup SystemD Catalogue Service
-      ansible.builtin.copy:
-        src: catalogue.service
-        dest: /etc/systemd/system/catalogue.service
+    - name: Loads nvm and install nodejs
+      ansible.builtin.shell:
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        nvm install 20
+    
