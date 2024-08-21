@@ -31,10 +31,20 @@
     - name: Download the application code to created app directory
       ansible.builtin.shell: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
       args:
-        chdir: /app
+        chdir: /tmp
 
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
         src: /tmp/catalogue.zip
-        dest: /tmp/
+        dest: /app
         remote_src: yes
+
+    - name: installing dependencies
+      ansible.builtin.command: npm install
+      args:
+        chdir: /app
+
+    - name: Setup SystemD Catalogue Service
+      ansible.builtin.copy:
+        src: catalogue.service
+        dest: /etc/systemd/system/catalogue.service
