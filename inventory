@@ -1,6 +1,6 @@
 [node1]
-3.84.127.27
+18.207.161.109
 
-[node1:vars]
-NAME=subbareddy-inventory
-category=DevOps
+#[node1:vars]
+#NAME=subbareddy-inventory
+#category=DevOps
