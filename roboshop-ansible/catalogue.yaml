@@ -43,6 +43,7 @@
       ansible.builtin.command: npm install
       args:
         chdir: /app
+      remote_src: yes
 
     - name: Setup SystemD Catalogue Service
       ansible.builtin.copy:
