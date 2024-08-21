@@ -12,16 +12,15 @@
       args:
         chdir: /app
 
-    - name: Loads nvm and install nodejs
-      ansible.builtin.shell: 'export NVM_DIR="$HOME/.nvm"'
+    - name: Unconditionally reboot the machine with all defaults
+      ansible.builtin.reboot:
 
-    - name: This loads nvm
-      ansible.builtin.shell: '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
-      ignore_errors: True
-
-    - name: This loads nvm bash_completion
-      ansible.builtin.shell: '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
-      ignore_errors: True
+    - name: Wait for the reboot to complete if there was a change.
+      wait_for_connection:
+        connect_timeout: 20
+        sleep: 5
+        delay: 5
+        timeout: 300
 
     - name: install nodejs
       ansible.builtin.shell: "nvm install 20"
