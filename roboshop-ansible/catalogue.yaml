@@ -2,15 +2,13 @@
   hosts: node2
   become: yes
   tasks:
-    - name: Install node version manager (nvm)
-      ansible.builtin.shell: "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
-
-    - name: Load nvm
-      ansible.builtin.shell: "source ~/.bashrc"
+    - name: Install EPEL packages
+      ansible.builtin.shell: "amazon-linux-extras install epel -y"
 
     - name: install latest LTS version of Node.js
-      ansible.builtin.command:
-        cmd: nvm install node
+      ansible.builtin.yum:
+        name: nodejs
+        state: installed
 
     - name: checking if roboshop user already exist
       ansible.builtin.command: id roboshop
