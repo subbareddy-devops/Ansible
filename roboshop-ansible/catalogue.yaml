@@ -30,7 +30,8 @@
 
     - name: Download the application code to created app directory
       ansible.builtin.shell: curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
-        dest: /app
+      args:
+        chdir: /app
 
     - name: Unarchive a file that is already on the remote machine
       ansible.builtin.unarchive:
