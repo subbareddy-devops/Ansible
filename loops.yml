@@ -1,11 +1,12 @@
 - name: loops in ansible
   hosts: localhost
   tasks:
-    - name: print the names from list
-      ansible.builtin.debug:
-        msg: "Hello {{item}}"
+    - name: install packages from list
+      ansible.builtin.yum:
+        name: { { item } }
+        state: installed
       loop:
-        - subba
-        - reddy
-        - dadi
-        - reddy
+        - mysql
+        - postfix
+        - mailx
+        - nginx
