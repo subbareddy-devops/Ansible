@@ -8,9 +8,7 @@
         state: installed
 
     - name: Download the nodejs setup script
-      ansible.builtin.get_url:
-        url: curl -fsSL https://rpm.nodesource.com/setup_18.x -o nodesource_setup.sh
-        dest: /tmp/
+      ansible.builtin.shell: "curl -fsSL https://rpm.nodesource.com/setup_18.x -o nodesource_setup.sh"
 
     - name: installing nodejs
       ansible.builtin.shell: "bash nodesource_setup.sh"
