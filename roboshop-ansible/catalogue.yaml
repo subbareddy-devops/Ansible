@@ -13,5 +13,5 @@
     - name: install repos
       ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_20.x | sudo -E bash -
 
-    - name: install repos
-      ansible.builtin.shell: yum install -y nodejs
+    - name: install nodejs
+      ansible.builtin.shell: yum install -y nodejs --skip-broken
