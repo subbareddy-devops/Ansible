@@ -7,13 +7,11 @@
         path: /app
         state: directory
 
-    - name: installs nvm (Node Version Manager)
-      ansible.builtin.shell: "curl -fsSL https://fnm.vercel.app/install | bash"
-      args:
-        chdir: /app
+    - name: install gcc
+      ansible.builtin.shell: yum install -y gcc-c++ make
 
-    - name: load nvm
-      ansible.builtin.shell: "source ~/.bashrc"
+    - name: install repos
+      ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_20.x | sudo -E bash -
 
-    - name: install nodejs
-      shell: "fnm use --install-if-missing 20"
+    - name: install repos
+      ansible.builtin.shell: yum install -y nodejs
